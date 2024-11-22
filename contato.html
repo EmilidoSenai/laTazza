@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tazza - Contato</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("JUavkDvJs_EW5rihv");
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>La Tazza</h1>
+        <br>
+        <br>
+        <nav>
+            <a href="index.html">Sobre a Empresa</a>
+            <a href="produtos.html">Produtos e Serviços</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+        <br>
+    </header>
+
+    <section>
+        <h2>Contato</h2>
+        <h5>A La Tazza adora ouvir nossos clientes e recebe com prazer quaisquer perguntas, sugestões ou para compartilhar suas experiências.</h5>
+        <h5>Preencha o formulário e nossa equipe tentará o melhor para responder prontamente.</h5>
+        <h5>Estamos aqui para ajudar a tornar sua experiência em nossa cafeteria ainda mais especial!</h5>
+        <form id="contact-form">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Telefone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">Endereço:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Enviar</button>
+        </form>
+    </section>
+    <br>
+    <br>
+    <footer>
+        <p>&copy; 2024 La Tazza. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script para envio de email -->
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        // Captura os valores dos campos do formulário
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+        const message = document.getElementById('message').value;
+
+        // Monta a mensagem para o WhatsApp
+        const whatsappMessage = `Olá ${name}.%0A` + 
+                                `Telefone: ${phone}.%0A` +
+                                `Email: ${email}.%0A` +
+                                `Endereço: ${address}.%0A` +
+                                `Mensagem: ${message}`;
+
+        // Substitua o número abaixo pelo seu número de WhatsApp (com código de país, exemplo: +55 para o Brasil)
+        const whatsappNumber = "985473528";
+
+        // Monta a URL do WhatsApp
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+        // Redireciona para o WhatsApp
+        window.open(whatsappURL, '_blank');
+    });
+</script>
+    
+</body>
+</html>
